@@ -39,7 +39,7 @@ pipeline {
           steps {
             container ('maven') {
               withCredentials([string(credentialsId: "$SONAR_CREDENTIAL_ID", variable: 'SONAR_TOKEN')]) {
-                withSonarQubeEnv('gulimall-analyze') {
+                withSonarQubeEnv('sonarqube') {
                  sh "mvn sonar:sonar -gs `pwd`/configuration/settings.xml -Dsonar.login=$SONAR_TOKEN"
                 }
               }
